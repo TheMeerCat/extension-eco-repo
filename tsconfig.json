@@ -13,5 +13,9 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "typeRoots": ["src/types", "node_modules/@types"]
-  }
+  },
+  "exclude": [
+    "backend"
+  ],
+  "include": ["custom.d.ts"]
 }

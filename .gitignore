@@ -34,3 +34,5 @@ publish-amadeus/
 .eslintcache
 
 executables/secrets.json
+
+extension

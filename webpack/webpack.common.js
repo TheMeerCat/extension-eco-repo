@@ -4,15 +4,11 @@ const CopyPlugin = require('copy-webpack-plugin');
 const srcDir = path.join(__dirname, '..', 'src');
 
 module.exports = {
-  entry: [
-    path.join(srcDir, 'main.ts'),
-    path.join(srcDir, '/assets/sass/common.scss'),
-
-  ],
+  entry: [path.join(srcDir, 'index.tsx')],
+  mode: "production",
   output: {
-    publicPath: '',
-    path: path.join(__dirname, '../dist/js'),
-    filename: '[name].js',
+    filename: "js/index.js",
+    path: path.resolve(__dirname, "..", "extension"),
   },
   optimization: {
     runtimeChunk: false,
@@ -20,20 +16,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ["@svgr/webpack"],
       },
       {
-        test: /\.scss$/,
-        exclude: /node_modules/,
+        test: /\.tsx?$/,
         use: [
           {
-            loader: 'file-loader',
-            options: { outputPath: '../css/', name: '[name].css' },
+            loader: "ts-loader",
+            options: {
+              compilerOptions: { noEmit: false },
+            },
           },
-          'sass-loader',
         ],
+        exclude: [ /node_modules/, /backend/ ],
       },
     ],
   },
@@ -43,8 +40,8 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: 'public', to: '../' },
-        { from: 'icons/*', to: '../images', context: 'src/assets/images/' },
+        { from: 'public', to: '.' },
+        { from: 'icons/*', to: 'images', context: 'src/assets/images/' },
       ],
       options: {},
     }),
