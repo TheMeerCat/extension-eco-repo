@@ -4,10 +4,12 @@ Backed was implemented using AWS Serverless framework. Resources are described i
 
 ### How to run it
 
-To run this project, you need `Serverless` on your computer. Then you can install dependencies using:
+To run this project, you need `Serverless` on your computer. Then you can install dependencies and dynamoDB using:
 
 ```
+cd backend
 npm i
+sls dynamodb install
 ```
 
 And start APIs using:
