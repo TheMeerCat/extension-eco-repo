@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 
 import { SkyscannerMainPane } from '../styles/SkyscannerMainPane';
 import { UserInput } from './UserInputDto';
+import { KayakMainPane } from '../styles/KayakMainPane';
 
 export class KayakService {
   public static shared = new KayakService();
@@ -52,10 +53,10 @@ export class KayakService {
     $('.keel-grid .col-list-body').prepend(rootElement);
 
     const root = ReactDOM.createRoot(rootElement);
-    
+
     root.render(
       <React.StrictMode>
-        <SkyscannerMainPane from={userInput.from} to={userInput.to} />
+        <KayakMainPane from={userInput.from} to={userInput.to} />
       </React.StrictMode>,
     );
   }

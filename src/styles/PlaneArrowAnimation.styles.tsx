@@ -31,6 +31,8 @@ const Plane = styled(PlaneIcon)`
   background-size: cover;
   animation: ${flyAnimation} 5s forwards;
   animation-iteration-count: 1;
+  -webkit-filter: drop-shadow( 1px 1px 1.5px rgba(0, 0, 0, .5));
+  filter: drop-shadow( 1px 1px 1.5px rgba(0, 0, 0, .5));
 `;
 
 const Co2InfoPane = styled.div`

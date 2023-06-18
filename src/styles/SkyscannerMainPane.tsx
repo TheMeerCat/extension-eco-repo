@@ -23,12 +23,19 @@ const SkyscannerUI = styled.div`
     font-size: 1.25 em;
     line-height: 1.5 em;
     font-weight: 700;
+    color: #05203c;
   }
 
   p {
     font-size: 0.875 em;
     line-height: 1.25 em;
     font-weight: 400;
+  }
+
+  path {
+    fill: #0062e3;
+    -webkit-filter: drop-shadow( 1px 1px 1.5px rgba(0, 0, 0, .5));
+    filter: drop-shadow( 1px 1px 1.5px rgba(0, 0, 0, .5));
   }
 `;
 

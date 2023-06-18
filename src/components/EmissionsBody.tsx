@@ -10,7 +10,7 @@ interface EmissionsBody {
 export const EmissionsBody = ({ co2 }: EmissionsBody) => {
   return (
     <EmissionsBodyStyled>
-      Estimated carbon emissions: {co2}kg (this was randomly generated)
+      Estimated carbon emissions: {co2} kg (this was randomly generated)
       <p>How can I reduce my footprint?</p>
       <ul>
         <li>Fly with airlines that have carbon offset programs.</li>
