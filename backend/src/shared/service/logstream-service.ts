@@ -1,7 +1,7 @@
 import * as uuid from 'uuid';
 
-import LogstreamRepository from '../persistence/logstream-repository';
 import { LogstreamEntry } from '../models/logstream-entry';
+import LogstreamRepository from '../persistence/logstream-repository';
 
 export default class LogstreamService {
   logstreamRepository: LogstreamRepository;

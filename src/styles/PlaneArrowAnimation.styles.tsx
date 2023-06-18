@@ -1,9 +1,9 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
-import PlaneIcon from '../assets/images/icons/airplane_6.svg';
 import CountUp from 'react-countup';
+import styled, { keyframes } from 'styled-components';
 
-// Keyframes for animating the plane along the arrow line
+import PlaneIcon from '../assets/images/icons/airplane_6.svg';
+
 const flyAnimation = keyframes`
   0% {
     opacity: 0;
@@ -18,14 +18,13 @@ const flyAnimation = keyframes`
   }
 `;
 
-// Styled components for the arrow and plane
 const Arrow = styled.div`
   position: relative;
 `;
 
 const Plane = styled(PlaneIcon)`
   position: absolute;
-  top: -12px; /* Adjust the position as per your requirement */
+  top: -12px;
   left: 0;
   width: 100%;
   height: 40px;
@@ -38,9 +37,9 @@ const Co2InfoPane = styled.div`
   margin-top: 40px;
   position: relative;
   margin-right: 20px;
-
   white-space: nowrap;
 `;
+
 const Co2InfoPaneText = styled.span`
   position: absolute;
   bottom: 0;

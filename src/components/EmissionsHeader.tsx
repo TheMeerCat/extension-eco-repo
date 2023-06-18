@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import { AnimatedArrow } from '../styles/PlaneArrowAnimation.styles';
 
 const EmissionsHeaderStyled = styled.div`

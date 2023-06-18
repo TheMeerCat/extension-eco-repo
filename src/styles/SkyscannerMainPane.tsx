@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { EmissionsBody } from '../components/EmissionsBody';
+
 import { EmissionsMainPane } from '../components/EmissionsMainPane';
 
 const SkyscannerUI = styled.div`

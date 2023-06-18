@@ -1,47 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-
 import $ from 'jquery';
-import { SkyscannerMainPane } from './styles/SkyscannerMainPane';
-import { SkyscannerService } from './logic/skyscanner';
+
 import { KayakService } from './logic/kayak';
+import { SkyscannerService } from './logic/skyscanner';
 
 $(document).ready(function () {
   const location = window.location;
   console.log(location, location.pathname);
   if (location.pathname.includes('/flights')) {
-    console.log('fly');
     setTimeout(waitForSomeElement, 1000);
   }
 });
 
-let waitForSomeElement = () => {
+const waitForSomeElement = () => {
   const container = $("[data-testid='place-card']") ?? $(`[data-resultid]`);
   if (!container) {
-    setTimeout(waitForSomeElement, 1000); // give everything some time to render
+    setTimeout(waitForSomeElement, 1000);
   } else {
     if (SkyscannerService.shared.isSkyscanner()) {
       SkyscannerService.shared.processSkyscannerPage();
     } else if (KayakService.shared.isKayak()) {
       KayakService.shared.processKayakPage();
     }
-    /*
-    const rootElement = document.createElement("div");
-    rootElement.id = "react-chrome-app";
-
-    if ($("#CombinedResultsPlaces")) {
-      $("#CombinedResultsPlaces").prepend(rootElement)
-    } else if ( $("[class*='SummaryInfo_itineraryCountContainer__']")) {
-      $("[class*='SummaryInfo_itineraryCountContainer__']").prepend(rootElement)
-    }
-
-    const root = ReactDOM.createRoot(rootElement);
-    root.render(
-      <React.StrictMode>
-        <SkyscannerMainPane from={data.from} to={data.to} />
-      </React.StrictMode>
-    );*/
   }
 };
-
-console.log('HEYAI1');

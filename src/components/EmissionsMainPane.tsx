@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { EmissionsHeader } from './EmissionsHeader';
-import { EmissionsBody } from './EmissionsBody';
-import { getEmissions } from '../logic/client';
 import { ColorRing } from 'react-loader-spinner';
+import styled from 'styled-components';
+
 import EcoMio from '../assets/images/icons/ecomio.svg';
+import { getEmissions } from '../logic/client';
+import { EmissionsBody } from './EmissionsBody';
+import { EmissionsHeader } from './EmissionsHeader';
 
 const EmissionsMainPaneStyled = styled.div`
   padding: 1em;
