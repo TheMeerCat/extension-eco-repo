@@ -12,7 +12,7 @@ custom:
       inMemory: true
       migrate: true
     stages:
-    - dev
+      - dev
 
 plugins:
   - serverless-webpack
@@ -25,7 +25,7 @@ provider:
   runtime: nodejs16.x
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
-  
+
   apiGateway:
     minimumCompressionSize: 1024
   environment:
@@ -40,10 +40,10 @@ functions:
           method: post
           path: /emissions
     iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:PutItem
-      Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.LOG_TABLE}
+      - Effect: Allow
+        Action:
+          - dynamodb:PutItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.LOG_TABLE}
   getLogStreamItems:
     handler: src/functions/logstream/get.handler
     events:
@@ -51,13 +51,13 @@ functions:
           method: get
           path: /emissions
     iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:GetItem
-      Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.LOG_TABLE}
-      
+      - Effect: Allow
+        Action:
+          - dynamodb:GetItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.LOG_TABLE}
+
 resources:
-  Resources: 
+  Resources:
     TodosDynamoDBTable:
       Type: AWS::DynamoDB::Table
       Properties:

@@ -1,27 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import $ from 'jquery'; 
+import $ from 'jquery';
 import { SkyscannerMainPane } from './styles/SkyscannerMainPane';
 import { SkyscannerService } from './logic/skyscanner';
+import { KayakService } from './logic/kayak';
 
-$( document ).ready(function() {
+$(document).ready(function () {
   const location = window.location;
-  console.log(location, location.pathname)
-  if (location.pathname.includes("/flights")) {
-    console.log("fly")
-    setTimeout(waitForSomeElement , 1000);
+  console.log(location, location.pathname);
+  if (location.pathname.includes('/flights')) {
+    console.log('fly');
+    setTimeout(waitForSomeElement, 1000);
   }
-})
+});
 
 let waitForSomeElement = () => {
-  const container = $("[data-testid='place-card']") ?? $("[class*='FlightsResults_']")
-
+  const container = $("[data-testid='place-card']") ?? $(`[data-resultid]`);
   if (!container) {
-      setTimeout(waitForSomeElement , 1000); // give everything some time to render
+    setTimeout(waitForSomeElement, 1000); // give everything some time to render
   } else {
     if (SkyscannerService.shared.isSkyscanner()) {
-      SkyscannerService.shared.processSkyscannerPage()
+      SkyscannerService.shared.processSkyscannerPage();
+    } else if (KayakService.shared.isKayak()) {
+      KayakService.shared.processKayakPage();
     }
     /*
     const rootElement = document.createElement("div");
@@ -42,4 +44,4 @@ let waitForSomeElement = () => {
   }
 };
 
-console.log("HEYAI1")
+console.log('HEYAI1');

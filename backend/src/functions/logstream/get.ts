@@ -1,15 +1,15 @@
-import { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
+import { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 
-import LogstreamService from '../../shared/service/logstream-service'
+import LogstreamService from '../../shared/service/logstream-service';
 
 export const handler: APIGatewayProxyHandler = async (_event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-  const logstreamService = new LogstreamService()
+  const logstreamService = new LogstreamService();
   const items = await logstreamService.getAllLogEntries();
 
   return {
     statusCode: 201,
     body: JSON.stringify({
-      items
-    })
+      items,
+    }),
   };
-}
+};

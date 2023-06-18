@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import $ from 'jquery'; 
+import $ from 'jquery';
 import { SkyscannerMainPane } from '../styles/SkyscannerMainPane';
 import { UserInput } from './UserInputDto';
 
@@ -30,53 +30,51 @@ export function getSkyscannerTravelDetails(): UserInputSkyscanner | undefined {
 */
 
 export class SkyscannerService {
-    public static shared = new SkyscannerService()
+  public static shared = new SkyscannerService();
 
-    private constructor() {
-     // nothing to do here   
-    }
-    
-    public isSkyscanner(): boolean {
-        return location.hostname.includes("skyscanner")
-    }
+  private constructor() {
+    // nothing to do here
+  }
 
-    public processSkyscannerPage() {
-        const urlData = this.getUserInput()
-        const betterData = this.getInfoFromScreen(urlData)
-        
-        const data = betterData.from && betterData.to ? betterData : urlData
+  public isSkyscanner(): boolean {
+    return location.hostname.includes('skyscanner');
+  }
 
-        this.appendEmissionInfo(data)
-    }
+  public processSkyscannerPage() {
+    const urlData = this.getUserInput();
+    const betterData = this.getInfoFromScreen(urlData);
 
-    private getUserInput(): UserInput {
-        const path = location.pathname
-        const from = path.split('/')?.[3]?.toUpperCase().substring(0, 2)
-        const to = path.split('/')?.[4]?.toUpperCase().substring(0, 2)
+    const data = betterData.from && betterData.to ? betterData : urlData;
 
-        return { from, to } as UserInput
-    }
+    this.appendEmissionInfo(data);
+  }
 
-    private getInfoFromScreen(userInput: UserInput) {
-        const from = $(`[aria-label*='${userInput.from}']`).attr("aria-label");
-        const to = $(`[aria-label*='${userInput.to}']`).attr("aria-label");
-        console.log("from, to: ", from, to)
+  private getUserInput(): UserInput {
+    const path = location.pathname;
+    const from = path.split('/')?.[3]?.toUpperCase().substring(0, 2);
+    const to = path.split('/')?.[4]?.toUpperCase().substring(0, 2);
 
-        return { from, to } as UserInput
-    }
+    return { from, to } as UserInput;
+  }
 
-    private appendEmissionInfo(userInput: UserInput) {
-        const rootElement = document.createElement("div");
-        rootElement.id = "eco-mio-chrome-app";
+  private getInfoFromScreen(userInput: UserInput) {
+    const from = $(`[aria-label*='${userInput.from}']`).attr('aria-label');
+    const to = $(`[aria-label*='${userInput.to}']`).attr('aria-label');
 
-        $("#oc-ui-wrapper-flights-search-summary").append(rootElement);
+    return { from, to } as UserInput;
+  }
 
-        const root = ReactDOM.createRoot(rootElement);
-        root.render(
-            <React.StrictMode>
-                <SkyscannerMainPane from={userInput.from} to={userInput.to} />
-            </React.StrictMode>
-        );
-        
-    }
+  private appendEmissionInfo(userInput: UserInput) {
+    const rootElement = document.createElement('div');
+    rootElement.id = 'eco-mio-chrome-app';
+
+    $('#oc-ui-wrapper-flights-search-summary').append(rootElement);
+
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(
+      <React.StrictMode>
+        <SkyscannerMainPane from={userInput.from} to={userInput.to} />
+      </React.StrictMode>,
+    );
+  }
 }

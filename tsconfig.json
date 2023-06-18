@@ -14,8 +14,6 @@
     "moduleResolution": "node",
     "typeRoots": ["src/types", "node_modules/@types"]
   },
-  "exclude": [
-    "backend"
-  ],
+  "exclude": ["backend"],
   "include": ["custom.d.ts"]
 }

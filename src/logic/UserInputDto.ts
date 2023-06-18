@@ -1,4 +1,4 @@
 export class UserInput {
-    from!: string;
-    to!: string;
+  from!: string;
+  to!: string;
 }

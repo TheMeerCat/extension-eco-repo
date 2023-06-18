@@ -5,10 +5,10 @@ const srcDir = path.join(__dirname, '..', 'src');
 
 module.exports = {
   entry: [path.join(srcDir, 'index.tsx')],
-  mode: "production",
+  mode: 'production',
   output: {
-    filename: "js/index.js",
-    path: path.resolve(__dirname, "..", "extension"),
+    filename: 'js/index.js',
+    path: path.resolve(__dirname, '..', 'extension'),
   },
   optimization: {
     runtimeChunk: false,
@@ -18,19 +18,19 @@ module.exports = {
       {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
-        use: ["@svgr/webpack"],
+        use: ['@svgr/webpack'],
       },
       {
         test: /\.tsx?$/,
         use: [
           {
-            loader: "ts-loader",
+            loader: 'ts-loader',
             options: {
               compilerOptions: { noEmit: false },
             },
           },
         ],
-        exclude: [ /node_modules/, /backend/ ],
+        exclude: [/node_modules/, /backend/],
       },
     ],
   },
