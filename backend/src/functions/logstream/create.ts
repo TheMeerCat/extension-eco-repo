@@ -4,10 +4,10 @@ import { APIGatewayProxyHandler, APIGatewayProxyEvent, APIGatewayProxyResult } f
 import LogstreamService from '../../shared/service/logstream-service'
 
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-  const { name } = JSON.parse(event.body)
+  const { from, to } = JSON.parse(event.body)
 
   const logstreamService = new LogstreamService()
-  const todo = await logstreamService.createTodo(name)
+  const todo = await logstreamService.createLogEntry(from, to)
 
   return {
     statusCode: 201,

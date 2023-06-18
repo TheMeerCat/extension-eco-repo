@@ -1,6 +1,7 @@
 export interface LogstreamEntry {
     id: string
-    name: string
-    done: boolean
+    from: string
+    to: string
+    co2: number
     createdAt: string
-  }
+}

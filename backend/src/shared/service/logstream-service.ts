@@ -1,37 +1,30 @@
 import * as uuid from 'uuid'
 
-import TodoRepository from '../persistence/logstream-repository'
+import LogstreamRepository from '../persistence/logstream-repository'
 import { LogstreamEntry } from '../models/logstream-entry'
 
 
 export default class LogstreamService {
 
-  todoRepository: TodoRepository;
+    logstreamRepository: LogstreamRepository;
 
-  constructor(todoRepository: TodoRepository = new TodoRepository()) {
-    this.todoRepository = todoRepository
+  constructor(logstreamRepository: LogstreamRepository = new LogstreamRepository()) {
+    this.logstreamRepository = logstreamRepository
   }
 
-  async getAllTodos(): Promise<LogstreamEntry[]> {
-    return this.todoRepository.getAllTodos()
+  async getAllLogEntries(): Promise<LogstreamEntry[]> {
+    return this.logstreamRepository.getAllLogs()
   }
 
-  async createTodo(name: string): Promise<LogstreamEntry> {
+  async createLogEntry(from: string, to: string): Promise<LogstreamEntry> {
     const id = uuid.v4()
 
-    return await this.todoRepository.createTodo({
+    return await this.logstreamRepository.createLog({
       id,
-      name,
-      done: false,
+      from,
+      to,
+      co2: Math.floor(Math.random() * 1000),
       createdAt: new Date().toISOString()
     })
-  }
-
-  async updateTodo(partialTodo: Partial<LogstreamEntry>) {
-    return await this.todoRepository.updateTodo(partialTodo)
-  }
-
-  async deleteTodoById(id: string) {
-    return await this.todoRepository.deleteTodoById(id)
   }
 }
