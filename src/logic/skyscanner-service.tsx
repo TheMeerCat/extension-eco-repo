@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import { SkyscannerMainPane } from '../styles/SkyscannerMainPane';
-import { UserInput } from './UserInputDto';
+import { UserInput } from './user-input';
 
 export class SkyscannerService {
   public static shared = new SkyscannerService();

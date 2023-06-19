@@ -2,8 +2,7 @@ import $ from 'jquery';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { SkyscannerMainPane } from '../styles/SkyscannerMainPane';
-import { UserInput } from './UserInputDto';
+import { UserInput } from './user-input';
 import { KayakMainPane } from '../styles/KayakMainPane';
 
 export class KayakService {

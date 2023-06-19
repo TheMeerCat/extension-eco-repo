@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { AnimatedArrow } from '../styles/PlaneArrowAnimation.styles';
+import { AnimatedArrow } from '../styles/PlaneArrowAnimation';
 
 const EmissionsHeaderStyled = styled.div`
   display: grid;

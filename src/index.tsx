@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
-import { KayakService } from './logic/kayak';
-import { SkyscannerService } from './logic/skyscanner';
+import { KayakService } from './logic/kayak-service';
+import { SkyscannerService } from './logic/skyscanner-service';
 
 $(document).ready(function () {
   const location = window.location;
