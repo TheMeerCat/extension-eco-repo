@@ -8,11 +8,10 @@
     "url": "https://github.com/ecomio/extension-challenge.git"
   },
   "author": "eco.mio GmbH <m@ecomio.com> (https://ecomio.com/)",
-  "main": "dist/main.js",
   "scripts": {
     "build": "npm run clean && webpack --config webpack/webpack.dev.js",
-    "clean": "rm -rf dist",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -r dist && npm install && webpack --config webpack/webpack.dev.js",
+    "clean": "rm -rf extension",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -r extension && npm install && webpack --config webpack/webpack.dev.js",
     "lint": "eslint */**/*.{js,ts,tsx} --quiet --fix",
     "lint:check": "eslint */**/*.{js,ts,tsx}",
     "test": "webpack --config webpack/webpack.dev.js && jest",
@@ -20,9 +19,18 @@
     "watch": "webpack --config webpack/webpack.dev.js --watch"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.0.1",
+    "@types/jquery": "^3.5.16",
+    "@types/react": "^18.2.12",
+    "@types/react-dom": "^18.2.5",
     "copy-webpack-plugin": "^11.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "file-loader": "^6.2.0",
     "jest-puppeteer": "^7.0.0",
+    "prettier": "2.8.8",
     "puppeteer": "^19.6.3",
     "sass": "^1.58.0",
     "sass-loader": "^13.2.0",
@@ -33,5 +41,25 @@
     "webpack": "^5.72.0",
     "webpack-cli": "^4.7.2",
     "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "jquery": "^3.7.0",
+    "react": "^18.2.0",
+    "react-countup": "^6.4.2",
+    "react-dom": "^18.2.0",
+    "react-loader-spinner": "^5.3.4",
+    "styled-components": "^6.0.0-rc.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
